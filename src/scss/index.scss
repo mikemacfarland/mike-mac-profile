@@ -1,0 +1,624 @@
+// ====== TABLE OF CONTENTS ======
+    // 1. - RESET (1.01 - END RESET)
+    // 2. - VARIABLES & COLORS (2.01 - END VARIABLES)
+    // 3. - MIXINS (3.01 - END MIXINS)
+    // 4. - STYLING BY SECTIONS (4.01 - END STYLING BY SECTIONS)
+
+// ===== 1. RESET ======
+// https://www.boag.online/blog/css-reset
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+}
+
+footer, header, nav, section, main{
+    display: block;
+}
+
+body{
+    line-height: 1;
+}
+
+ol, ul{
+    list-style: none;
+}
+
+blockquote, q{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+// ===== 1.01 END RESET ======
+// =====
+// ===== 2.0 VARIABLES & COLORS =====
+
+$black:black;
+$white:white;
+$lightgrey:rgb(238, 229, 218);
+$darkgrey:darkgrey;
+$bg-color:rgb(43, 40, 38);
+$base-color:#da917e;
+$secondary-color:#99da7e;
+$tertiary-color:#7ec7da;
+$quaderary-color:#bf7eda;
+
+// ===== SCREEN SIZES
+// 320px — 480px for mobile devices, 481px — 768px for iPads & tablets, 
+// 769px — 1024px for small screens like laptop, 1025px — 1200px for 
+// large screens like Desktops, and 1201px and above for extra large screens like TV.
+
+$sm:320px;
+$md:481px;
+$lg:769px;
+$xl:1025px;
+$xxl:1200px;
+
+// ===== 2.01 END VARIABLES & COLORS ======
+// ===== 
+// ===== 3.0 @MIXINS =====
+
+@mixin media($screenWidth){
+    @media (min-width:$screenWidth){
+        @content;
+    }
+}
+
+@mixin flex($direction,$justify,$items){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    justify-items: $items;
+}
+
+@mixin marquee($x1,$x2){
+    @keyframes marquee{
+        0%{
+            transform: translateX($x1);
+        }
+        100%{
+            transform: translateX($x2);
+        }
+   }
+}
+
+@mixin bullet($size,$radius){
+    &::before,
+    &::after{
+        content:'';
+        position: absolute;
+        width: $size;
+        height: $size;
+        border-radius: $radius;
+        transition: all 1s linear;
+    }
+}
+
+@mixin opacity($duration,$delay){
+    animation: opacity $duration ease-in;
+    animation-delay: $delay;
+    animation-fill-mode: forwards;
+    @keyframes opacity{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity:1
+        }
+    }
+}
+
+@mixin translate($x){
+    transform: translateX($x);
+    transition: transform .7s linear;
+    animation: hide .7s linear;
+    animation-fill-mode:forwards;
+
+}
+
+
+// ===== 3.01 END @MIXINS =====
+// =====
+// ===== 4.0 BY SECTION ======
+
+
+// ===== BASE STYLING =====
+body{
+    @include flex(column,start,center);
+    font-family: 'Poppins', sans-serif;
+    width: 100vw;
+    color: $lightgrey;
+    min-height: 100vh;
+    background-color: $bg-color;
+    background-image: linear-gradient();
+
+    @include media(1023px){
+        font-size: 1.2rem;
+    }
+}
+
+header{
+    @include flex(row,end,center);
+    align-items:center;
+    width: 80%;
+    margin: 2rem auto 0 auto;
+
+    @include media(1023px){
+        width: 70%
+    }
+}
+
+a{
+    @include flex(row,center,center);
+    align-items: center;
+    text-decoration: none;
+    color: $lightgrey;
+    background-color: $bg-color;
+    border: 1px solid $lightgrey;
+    font: inherit;
+    height: 3rem;
+    border-radius: 1.5rem;
+    transition: all .5s ease;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $base-color;
+    }
+}
+
+button{
+    background-color: $lightgrey;
+    font: inherit;
+    font-weight: bold;
+    width: 45%;
+    height: 3.5rem;
+    border-radius: 1.75rem;
+    transition: all .5s ease;
+    border: none;
+    margin-top: 1.5rem;
+    box-shadow: 6px 6px 8px rgba(0,0,0,.5);
+    cursor: pointer;
+
+    // from hidden-left and hidden-right
+    animation: opacityy .5s ease;
+    animation-fill-mode: forwards;
+
+
+    &:hover{
+        background-color: $base-color;
+    }
+}
+
+.social_link{
+    width: 3rem;
+    margin-right: 1rem;
+    img{
+        width: 55%;
+        height: 55%;
+    }
+}
+
+.resume_link{
+    padding: 0 2rem;
+}
+
+section{
+    @include media(767px){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .content:nth-of-type(1){
+            margin-right: 2rem;
+        }
+    }
+
+    @include media(1023px){
+        width: 70%
+    }
+
+    @include flex(column,start,center);
+    align-items: center;
+    margin: 5rem auto;
+    width: 80%;
+
+    h1{
+        font-size: 2.5rem;
+        font-weight: 900;
+        & span{
+            color: $base-color;
+        }
+        @include media(1023px){
+            font-size: 3rem;
+        }
+    }
+
+    & h2{
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin: 2rem 0 .75rem 0;
+    }
+
+   & img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    max-width: 520px;
+   }
+
+   p,li{
+    line-height: 1.5rem;
+   }
+}
+
+.content{
+    @include media(768px){
+        max-width: 50%;
+
+        &:last-of-type{
+            max-width: 100%;
+            ul{
+                width: 100%;
+                @include flex(row,space-between,center)
+            }
+        }
+    }
+}
+
+footer{
+    @include flex(row,center,center);
+    height: 4rem;
+}
+
+// ===== MODIFYING CLASSES =====
+.hidden-left{
+    @include translate(-50%);
+    animation: opacityy .5s ease;
+    animation-fill-mode: forwards;
+    @keyframes opacityy{
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0
+        }
+    }
+}
+
+.hidden-right{
+    @include translate(20%);
+    animation: opacityy .5s ease;
+    animation-fill-mode: forwards;
+    @keyframes opacityy{
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0
+        }
+    }
+}
+
+.show{
+    @include opacity(1s,0s);   
+}
+
+
+// ===== HERO SECTION =====
+.section_hero{
+    margin-top: 10rem;
+    margin-bottom:2rem;
+
+    // 1st h1 in hero section
+    #h1-1{
+        opacity: 0;
+        transition: all .7s ease;
+    }
+    
+    // 2nd h1 in hero section
+    #h1-2{
+       opacity: 0;
+        color: $base-color;
+        transition: all .7s ease;
+    }
+
+    p{
+        opacity: 0;
+        @include opacity(.7s,1.7s);
+    }
+
+    button{
+        opacity: 0;
+        transition: all .7s ease;
+        margin-bottom: 2rem
+    }
+}
+
+ 
+._heroslider{
+    // marquee slider
+    // https://www.w3docs.com/snippets/css/how-to-have-the-marquee-effect-without-using-the-marquee-tag-with-css-javascript-and-jquery.html#result-8
+    @include flex(row,start,center);
+    background-color: $lightgrey;
+    width: 102vw;
+    color: $bg-color;
+    rotate: 2deg;   
+    overflow:hidden;
+
+    .slider{
+        @include flex(row,start,center);
+        background-color: $lightgrey;
+        height: 4rem;
+
+        ._item{
+            margin: auto 3rem;
+            padding-top: .3rem;
+            padding-left: 2rem;
+            position: relative;
+            @include flex(row,space-between,center);
+            align-items: center;
+        p{
+            position: absolute;
+            left: 0px;
+            top: 37%;
+            line-height: 1.5rem;
+            color: $base-color;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        }
+    }
+
+    .slider:nth-of-type(1){
+        @include marquee(0%,-100%);
+        animation: marquee 10s linear infinite;
+        user-select: none;
+    }
+
+    .slider:nth-of-type(2){
+        @include marquee(0%,-100%); 
+        animation: marquee 10s linear infinite;
+        user-select: none;
+    }
+
+    .slider:nth-of-type(3){
+        @include marquee(0%,-100%); 
+        animation: marquee 10s linear infinite;
+        user-select: none;
+    }
+}
+
+
+// ===== ABOUT SECTION =====
+.section_about{
+
+    h1{
+        margin-bottom: 2rem;
+    }
+
+    h1:nth-of-type(1){
+        opacity: 0;
+    }
+
+    p{
+        margin-bottom: 1rem;
+        opacity: 0;
+    }
+
+    .content:nth-of-type(2){
+        margin: 2rem auto 4rem auto;
+        width: 80%;
+        @include media(768px){
+            width: 35%;
+        }
+    }
+}
+
+.tech_list{
+    opacity: 0;
+    @include flex(column,space-between,center);
+    flex-wrap: wrap;
+    min-height: 64px;
+    max-height: 120px;
+    p{
+        opacity: 1;
+    }
+}
+
+.bullet{
+    @include flex(row,start,center);
+    align-items: center;
+    margin: .5rem;
+    user-select: none;
+    min-width: 25%;
+
+    p{
+        margin: auto 0;
+    }
+
+    &_icon{
+        position: relative;
+        width: 25px;
+        height: 15px;
+        margin-right: .6rem;
+    
+        @include bullet(15px,7.5px);
+
+        &::before{
+            background-color: $secondary-color;
+        }
+        &::after{
+            left: 7px;
+            top: 0;
+            background-color: $base-color;
+        }
+    }
+
+    &:hover{
+        .bullet_icon::before{
+            transition: all .3s linear;
+            box-shadow: 0px 0px 10px $secondary-color;
+        }
+        .bullet_icon::after{
+            transition: all .3s linear;
+            box-shadow: 0px 0px 10px $base-color;
+        }
+    }
+}
+
+// ===== EXPERIENCE SECTION =====
+.section_experience{
+
+    & .job_title{
+        @include flex(row,space-between,center);
+        align-items: flex-end;
+        margin-bottom: .5rem ;
+
+        p:nth-of-type(1){
+            font-weight: 600;
+            color: $base-color;
+            margin-right: 1rem;
+        }
+
+        p:nth-of-type(2){
+            white-space: nowrap;
+            color: $darkgrey;
+        }
+    }
+
+    li{
+        letter-spacing: .028rem;
+        line-height: 1.1rem;
+    }
+    // every li item except for the frist one
+    ul li:not(li:nth-of-type(1)){
+        @include media(1023px){
+            max-width: 85%;
+        }
+        
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: .25rem;
+        @include bullet(9px,4.5px);
+
+        &::before{
+            transition: all 1s linear;
+            background-color: $secondary-color;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 0px;
+        }
+        &::after{
+            transition: all 1s linear;
+            background-color: $base-color;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 5px;
+        }
+
+        &:hover{
+            &::before{
+                transition: all .3s linear;
+                box-shadow: 0px 0px 10px $secondary-color;
+            }
+            &::after{
+                transition: all .3s linear;
+                box-shadow: 0px 0px 10px $base-color;
+            }
+        }
+    }
+}
+
+// ===== SKILLS SECTION =====
+.section_skills{
+    h1{
+        margin-bottom: 2rem;
+        opacity: 0;
+    }
+
+    li{
+        opacity: 0;
+        position: relative;
+        padding-left:1rem;
+        position: relative;
+
+        &::before{
+            transition: all 1s linear;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 6px;
+            border-radius: 3px;
+            left: 0;
+            top: 0;
+        }
+
+        &:nth-of-type(1)::before{
+            background-color: $secondary-color;
+        }
+
+        &:nth-of-type(2)::before{
+            background-color: $tertiary-color;
+        }
+
+        &:nth-of-type(3)::before{
+            background-color: $quaderary-color;
+        }
+
+        &:hover{
+            &::before{
+                transition: all .3s linear;
+                box-shadow: 0px 0px 5px $secondary-color;
+            }
+        }
+        
+
+    }
+}
+
+
+// ===== CONTACT SECTION =====
+.section_contact{
+    @include flex(column,start,center);
+    align-items: center;
+    margin-bottom: 16rem;
+
+    h1{
+        transition: all .7s ease;
+        opacity: 0;
+        color: $base-color;
+    }
+}
+
+
+
+
+
+
+
+
