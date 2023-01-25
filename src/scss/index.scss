@@ -63,6 +63,7 @@ $white:white;
 $lightgrey:rgb(238, 229, 218);
 $darkgrey:darkgrey;
 $bg-color:rgb(43, 40, 38);
+$bg-color30:rgba(43,40,38,.3);
 $base-color:#da917e;
 $secondary-color:#99da7e;
 $tertiary-color:#7ec7da;
@@ -81,7 +82,7 @@ $xxl:1200px;
 
 // ===== 2.01 END VARIABLES & COLORS ======
 // ===== 
-// ===== 3.0 @MIXINS =====
+// ===== 3.0 @MIXINS & ANIMATIONS=====
 
 @mixin media($screenWidth){
     @media (min-width:$screenWidth){
@@ -119,35 +120,77 @@ $xxl:1200px;
     }
 }
 
+@mixin opaque($duration,$delay){
+    animation: opaque $duration ease-in;
+    animation-delay: $delay;
+    animation-fill-mode: forwards;
+}
+
 @mixin opacity($duration,$delay){
     animation: opacity $duration ease-in;
     animation-delay: $delay;
     animation-fill-mode: forwards;
-    @keyframes opacity{
-        0%{
-            opacity: 0;
-        }
-        100%{
-            opacity:1
-        }
-    }
+}
+
+@mixin opaque($duration,$delay){
+    animation: opaque $duration ease-in;
+    animation-delay: $delay;
+    animation-fill-mode: forwards;
 }
 
 @mixin translate($x){
     transform: translateX($x);
     transition: transform .7s linear;
-    animation: hide .7s linear;
-    animation-fill-mode:forwards;
-
 }
 
+// ===== ANIMATIONS =====
 
-// ===== 3.01 END @MIXINS =====
+@keyframes opacity{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity:1
+    }
+}
+
+@keyframes opaque{
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+// ===== MODIFYING CLASSES =====
+.hidden-left{
+    @include translate(-50%);
+    animation: opaque .5s ease;
+    animation-fill-mode: forwards;
+    
+}
+
+.hidden-right{
+    @include translate(20%);
+    animation: opaque .5s ease;
+    animation-fill-mode: forwards;
+}
+
+.hidden{
+    @include opaque(1s,0s)
+}
+
+.show{
+    @include opacity(1s,0s);   
+}
+
+// ===== 3.01 END @MIXINS & ANIMATIONS =====
 // =====
 // ===== 4.0 BY SECTION ======
 
-
 // ===== BASE STYLING =====
+
 body{
     @include flex(column,start,center);
     font-family: 'Poppins', sans-serif;
@@ -156,19 +199,23 @@ body{
     min-height: 100vh;
     background-color: $bg-color;
     background-image: linear-gradient();
-
+    overflow-x: hidden;
     @include media(1023px){
         font-size: 1.2rem;
     }
 }
 
 header{
-    @include flex(row,end,center);
+    @include flex(row,center,center);
     align-items:center;
     width: 80%;
     margin: 2rem auto 0 auto;
 
-    @include media(1023px){
+    @include media(479px){
+        justify-content: end;
+    }
+
+    @include media(1439px){
         width: 70%
     }
 }
@@ -205,7 +252,7 @@ button{
     cursor: pointer;
 
     // from hidden-left and hidden-right
-    animation: opacityy .5s ease;
+    animation: opaque .5s ease;
     animation-fill-mode: forwards;
 
 
@@ -237,7 +284,7 @@ section{
         }
     }
 
-    @include media(1023px){
+    @include media(1439px){
         width: 70%
     }
 
@@ -257,16 +304,16 @@ section{
         }
     }
 
-    & h2{
+    h2{
         font-size: 1.7rem;
         font-weight: 700;
         margin: 2rem 0 .75rem 0;
     }
 
-   & img{
+   img{
+    border-radius: 2rem;
     width: 100%;
     height: 100%;
-    border-radius: 2rem;
     max-width: 520px;
    }
 
@@ -277,15 +324,7 @@ section{
 
 .content{
     @include media(768px){
-        max-width: 50%;
-
-        &:last-of-type{
-            max-width: 100%;
-            ul{
-                width: 100%;
-                @include flex(row,space-between,center)
-            }
-        }
+        width: 50%;
     }
 }
 
@@ -294,43 +333,11 @@ footer{
     height: 4rem;
 }
 
-// ===== MODIFYING CLASSES =====
-.hidden-left{
-    @include translate(-50%);
-    animation: opacityy .5s ease;
-    animation-fill-mode: forwards;
-    @keyframes opacityy{
-        0%{
-            opacity: 1;
-        }
-        100%{
-            opacity: 0
-        }
-    }
-}
-
-.hidden-right{
-    @include translate(20%);
-    animation: opacityy .5s ease;
-    animation-fill-mode: forwards;
-    @keyframes opacityy{
-        0%{
-            opacity: 1;
-        }
-        100%{
-            opacity: 0
-        }
-    }
-}
-
-.show{
-    @include opacity(1s,0s);   
-}
 
 
 // ===== HERO SECTION =====
 .section_hero{
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-bottom:2rem;
 
     // 1st h1 in hero section
@@ -346,28 +353,30 @@ footer{
         transition: all .7s ease;
     }
 
-    p{
-        opacity: 0;
-        @include opacity(.7s,1.7s);
-    }
-
     button{
         opacity: 0;
         transition: all .7s ease;
         margin-bottom: 2rem
     }
+
+    :has(img){
+        max-width: 405px;
+
+        @include media(767px){
+            max-width: 520px;
+            max-height: 520px;
+        }
+    }
 }
 
- 
 ._heroslider{
     // marquee slider
     // https://www.w3docs.com/snippets/css/how-to-have-the-marquee-effect-without-using-the-marquee-tag-with-css-javascript-and-jquery.html#result-8
     @include flex(row,start,center);
     background-color: $lightgrey;
-    width: 102vw;
     color: $bg-color;
-    rotate: 2deg;   
-    overflow:hidden;
+    rotate: 2deg;
+    overflow: hidden;
 
     .slider{
         @include flex(row,start,center);
@@ -413,7 +422,6 @@ footer{
     }
 }
 
-
 // ===== ABOUT SECTION =====
 .section_about{
 
@@ -430,12 +438,26 @@ footer{
         opacity: 0;
     }
 
-    .content:nth-of-type(2){
-        margin: 2rem auto 4rem auto;
-        width: 80%;
-        @include media(768px){
-            width: 35%;
+    .content:nth-of-type(1){
+        @include media(767px){
+          width: 60%;  
         }
+        
+        // @include media(1023px){
+        //     width: 63%;
+        // }
+    }
+
+    .content:nth-of-type(2){
+        margin: 2rem auto;
+        width: 90%;
+       
+        @include media(767px){
+            width: 40%;
+          }
+        // @include media(1023px){
+        //     width: 37%;
+        // }
     }
 }
 
@@ -557,15 +579,28 @@ footer{
 // ===== SKILLS SECTION =====
 .section_skills{
     h1{
-        margin-bottom: 2rem;
         opacity: 0;
+        margin-bottom: 2rem;
+        transition: all .7s ease;
+    }
+
+    .content{
+        width: 100%;
+    }
+
+    ul{
+        @include media(676px){
+        @include flex(row,space-between,center)
+    }
     }
 
     li{
         opacity: 0;
         position: relative;
         padding-left:1rem;
-        position: relative;
+        @include media(767px){
+            width: 33%;
+        }
 
         &::before{
             transition: all 1s linear;
@@ -596,29 +631,31 @@ footer{
                 box-shadow: 0px 0px 5px $secondary-color;
             }
         }
-        
-
     }
 }
-
 
 // ===== CONTACT SECTION =====
-.section_contact{
-    @include flex(column,start,center);
+.overlay{
+    @include flex(row,center,center);
     align-items: center;
-    margin-bottom: 16rem;
+    opacity: 0;
+    z-index: -10;
 
-    h1{
-        transition: all .7s ease;
-        opacity: 0;
-        color: $base-color;
+    :first-child{
+        width: 85%;
+        // width: 50%;
+        height:50%;
+        background-color: $lightgrey;
+        border-radius: 2rem;
     }
 }
 
-
-
-
-
-
-
-
+.overlay_show{
+    opacity: 1;
+    z-index: 1;
+    position: fixed;
+    background-color: $bg-color30;
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+}

@@ -1,0 +1,24 @@
+
+
+--Layout
+    ✔ reduce margin top of hero section @done(23-01-25 11:33)
+    ☐ check cross browser - mozilla - ie - safari
+    
+--Animations
+    ✔ fix skills boxes animation timing @done(23-01-25 11:33)
+
+--Content
+    ☐ add portfolio section
+        ☐ include success stories from flowhub/firestation & seed/jars
+        ☐ make tiles blakc and white, color on hover
+        ☐ animate with scale on scroll down
+    ✔ change title of page @done(23-01-25 10:24)
+    ☐ change favicon
+    ✔ change preview img @done(23-01-25 12:13)
+
+--Links & Buttons
+    ✔ make overlay for contact @done(23-01-25 12:12)
+    ☐ make contact 
+
+--CSS
+    ☐ refactor. remove some of the reset styles that are redeclared
