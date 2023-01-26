@@ -3,6 +3,7 @@
 --Layout
     ✔ reduce margin top of hero section @done(23-01-25 11:33)
     ☐ check cross browser - mozilla - ie - safari
+    ☐ figure out whats overflowing the body in x for small screens
     
 --Animations
     ✔ fix skills boxes animation timing @done(23-01-25 11:33)
@@ -19,7 +20,7 @@
 
 --Links & Buttons
     ✔ make overlay for contact @done(23-01-25 12:12)
-    ☐ make contact 
+    ✔ make contact @done(23-01-25 23:01)
 
 --CSS
     ☐ refactor. remove some of the reset styles that are redeclared
@@ -27,7 +28,7 @@
 --from amber
 Comments: 
     ✔ 1. Add favicon to the site @done(23-01-25 15:15)
-    ☐ 2.  "Contact Me" button doesn't do anything 
+    ✔ 2.  "Contact Me" button doesn't do anything @done(23-01-25 23:01)
     ✔ 4. I think the Contact button should highlight a different color - too matchy with the headline @done(23-01-25 18:40)
     ✔ 5. Rotating banner - I think it could be slowed down a bit .. but optional. I also think it should flow left to right, instead of current right to left, but optional. @done(23-01-25 15:35)
     ✔ 6. On mobile, the scrolling has choppy edges, which may or may not be intentional. add box shadow @done(23-01-25 15:33)
@@ -44,7 +45,7 @@ Comments:
         ✔ In experience section, either have every bullet end with a . or none of them. Currently there's a mix. @done(23-01-25 19:29)
 
 ✘ Fix the last bullet ... it'd look better aligning with the first line instead of being between the two lines. @cancelled(23-01-25 19:33)
-☐ 12. Consider sections with a different color background to create flow and distinction. Could even be just the whole Professional Experience section on a super light gray background with dark charcoal font. Optional.
+✔ 12. Consider sections with a different color background to create flow and distinction. Could even be just the whole Professional Experience section on a super light gray background with dark charcoal font. Optional. @done(23-01-25 23:01)
 ✔ 13. Prof Experience section on mobile looks pretty good, just same comment about switching to put the title first, company second, and omit location, but otherwise spacing and such feels ok (though could put more padding between each section) @done(23-01-25 19:36)
 ✔ 14. I like the WhyMe section on mobile better (the vertical layout) ... desktop feels a little busy with the text right up to the colored pillars, but I'm not sure you have space to put more padding there ... @done(23-01-25 19:36)
 ✔ On mobile, check the lazy loading ... I almost had to go past the WhyMe H1 for "self starter" to load @done(23-01-25 19:32)
