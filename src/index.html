@@ -4,6 +4,7 @@
   <meta charset='UTF-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel="shortcut icon" tuype='image/png' href="./assets/favicon.png">
   <link rel="image_src" href="./assets/preview.png">
   <link rel='preconnect' href='https://fonts.googleapis.com'>
   <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
@@ -18,19 +19,17 @@
     <a class='resume_link' target='blank' href="https://drive.google.com/file/d/1nJvJ77za2OyHMk5jbuybhK7n6AN0xFDZ/view">Download Resume</a>
   </header>
 
-  <!-- HERO -->
   <section class='section_hero'>
     <div class='content'>
       <h1 id='h1-1'>Mike.</h1>
       <h1 id='h1-2' class='_title'>Front End Developer, Content Creator</h1>
-      <button class="contact">Contact Me</button>    
+      <a href="#contact" class="contact_link">Contact Me</a>    
       </div>
       <div class='content'>
       <img src='./assets/mike-macfarland.jpg' alt='Mike Macfarland'>
     </div>
   </section>
 
-  <!-- SKILLSSLIDER -->
   <div class='_heroslider'>
     <div class='slider'>
       <!-- content injected from js -->
@@ -43,15 +42,14 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
   <section id='about' class='section_about'>
     <div class='content'>
       <h1>About</h1>
       <p>My passion is creation. As a self-taught product developer and machine programmer,
-        The only equal to holding your work in your hands is seeing it come to life digitally. As a frontend developer, 
-         I take beautiful designs, and turn them into functional reality.</p>
-      <p>
-      </p><p>Here are a few technologies i enjoy working with:</p>
+        the only equal to holding your work in your hands is seeing it come to life digitally. As a frontend developer, 
+         I take beautiful designs, and turn them into functional reality.
+      </p>
+      <p>Here are a few technologies I enjoy working with:</p>
       <ul class='tech_list'>
         <!-- content injected from js -->
       </ul>
@@ -62,43 +60,41 @@
     
   </section >
 
-  <!-- EXPERIENCE -->
   <section id='experience' class='section_experience'>
     <div class='content_experience'>
       <h1>Professional Experience</h1>
       <div>
-        <h2>Freelance - Various locations</h2>
+        <h2>Frontend Developer & Content Creator</h2>
         <ul>
-          <li class='job_title'><p >Frontend Developer & Content Creator</p><p>Jun 2021 - Present</p></li>
+          <li class='company'><p >Freelance</p><p>Jun 2021 - Present</p></li>
           <li>Photography and videography services</li>
           <li>Shoot photos, videos and create customer success stories</li>
-          <li>Consult on web development needs.</li>
+          <li>Consult on web development needs</li>
         </ul>
       </div>
 
       <div>
-        <h2>ATS Diesel Performance - Arvada, Co</h2>
+        <h2>Machine Programmer</h2>
         <ul>
-          <li class='job_title'><p>Machine Programmer</p><p>Aug 2012 - Apr 2021</p></li>
+          <li class='company'><p>ATS Diesel Performance</p><p>Aug 2012 - Apr 2021</p></li>
           <li>Program machines to meet product design & production needs</li>
           <li>Develop MVP prototypes for engineering needs</li>
           <li>Oversee integration of new machinery & employees, mentor entry level employees</li>
           <li>Maintain programs & documentation version control utilizing Git & Solidworks PDM</li>
-          <li>Integrated version control and documentation requirements into production workflow to improve processes and increase profits.</li>
+          <li>Integrated version control and documentation requirements into production workflow to improve processes and increase profits</li>
         </ul>
       </div>
 
       <!-- <div>
-        <h2>Monarch Design - Denver, Co</h2>
+        <h2>Frontend Developer</h2>
         <ul>
-          <li class='job_title'><p>Frontend Developer</p><p>Jun 2011 - Jul 2012</p></li>
+          <li class='company'><p>Monarch Design</p><p>Jun 2011 - Jul 2012</p></li>
           <li>Develop Static websites</li>
         </ul>
       </div> -->
 
     </div>
   </section>
-  <!-- SKILLS -->
   <section id='skills' class='section_skills'>
     <div class="content">
       <h1>Why<span>Me</span></h1>
@@ -119,22 +115,28 @@
     </div>
   </section>
 
-  <!-- <section class='section_portfolio'>
-    <h1>Portfolio</h1>
-    <div>portfolio items div</div>
-  </section> -->
-
-  <!-- make eliot a site and use it for this section? -->
   <section id='contact' class='section_contact'>
     <h1>Lets connect</h1>
-    <!-- button can be a A tag -->
-    <button class="contact">Contact Me</button>
-  </section>
+    <!-- put form here that expands vertically when contact is pressed -->
+  <!-- if contact me on top of page is pressed, navigate to bottom and expand form -->
+    <div class="content">
+      <div>
+        <a href="mailto:m_macfarland@live.com">Email</a>
+        <a target="_blank" href="https://www.linkedin.com/in/mike-macfarland/">Linkedin</a>
+      </div>
 
-  <div class="overlay overlay_show">
-    <div>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="subject" 
+        value="Inquiry from mike macfarland profile" />
+          <label>Your Name: <input type="text" name="name" /></label>          
+          <label>Your Email: <input type="email" name="email" /></label>
+          <label>Message: <textarea name="message"></textarea></label>
+          <label for="bot-field"><input type="text"></label>
+          <button type="submit">Send</button>
+      </form>
     </div>
-  </div>
+    
+  </section>
 
   <footer>
     <p>&copy; 2023 | Mike Macfarland</p>

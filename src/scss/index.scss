@@ -63,9 +63,10 @@ $white:white;
 $lightgrey:rgb(238, 229, 218);
 $darkgrey:darkgrey;
 $bg-color:rgb(43, 40, 38);
-$bg-color30:rgba(43,40,38,.3);
+$bg-color30:rgba(43, 40, 38,.3);
 $base-color:#da917e;
 $secondary-color:#99da7e;
+$secondary-color20:rgba(153, 218, 126,.12);
 $tertiary-color:#7ec7da;
 $quaderary-color:#bf7eda;
 
@@ -192,6 +193,8 @@ $xxl:1200px;
 // ===== BASE STYLING =====
 
 body{
+    background: radial-gradient(circle farthest-side at left center, $secondary-color20 -20%, $bg-color 100%);
+    position: relative;
     @include flex(column,start,center);
     font-family: 'Poppins', sans-serif;
     width: 100vw;
@@ -220,42 +223,44 @@ header{
     }
 }
 
+
+button,
 a{
+    font: inherit;
     @include flex(row,center,center);
     align-items: center;
-    text-decoration: none;
-    color: $lightgrey;
-    background-color: $bg-color;
-    border: 1px solid $lightgrey;
-    font: inherit;
-    height: 3rem;
-    border-radius: 1.5rem;
     transition: all .5s ease;
     cursor: pointer;
-
-    &:hover{
-        background-color: $base-color;
-    }
+    text-decoration: none;
 }
 
 button{
     background-color: $lightgrey;
-    font: inherit;
     font-weight: bold;
     width: 45%;
     height: 3.5rem;
     border-radius: 1.75rem;
-    transition: all .5s ease;
     border: none;
     margin-top: 1.5rem;
     box-shadow: 6px 6px 8px rgba(0,0,0,.5);
-    cursor: pointer;
 
     // from hidden-left and hidden-right
     animation: opaque .5s ease;
     animation-fill-mode: forwards;
 
+    &:hover{
+        background-color: $secondary-color;
+    }
+}
 
+.social_link,
+.resume_link,
+.section_contact a{
+    height: 3rem;
+    border-radius: 1.5rem;
+    color: $lightgrey;
+    background-color: $bg-color;
+    border: 1px solid $lightgrey;
     &:hover{
         background-color: $base-color;
     }
@@ -275,6 +280,11 @@ button{
 }
 
 section{
+    @include flex(column,start,center);
+    align-items: center;
+    margin: 5rem auto;
+    width: 80%;
+
     @include media(767px){
         flex-direction: row;
         justify-content: space-between;
@@ -287,11 +297,6 @@ section{
     @include media(1439px){
         width: 70%
     }
-
-    @include flex(column,start,center);
-    align-items: center;
-    margin: 5rem auto;
-    width: 80%;
 
     h1{
         font-size: 2.5rem;
@@ -307,7 +312,7 @@ section{
     h2{
         font-size: 1.7rem;
         font-weight: 700;
-        margin: 2rem 0 .75rem 0;
+        margin: 3rem 0 .5rem 0;
     }
 
    img{
@@ -333,12 +338,10 @@ footer{
     height: 4rem;
 }
 
-
-
 // ===== HERO SECTION =====
 .section_hero{
     margin-top: 8rem;
-    margin-bottom:2rem;
+    margin-bottom:2.5rem;
 
     // 1st h1 in hero section
     #h1-1{
@@ -353,10 +356,22 @@ footer{
         transition: all .7s ease;
     }
 
-    button{
+    a{
         opacity: 0;
         transition: all .7s ease;
-        margin-bottom: 2rem
+        margin-bottom: 2rem;
+        color: $bg-color;
+        background-color: $lightgrey;
+        font-weight: bold;
+        width: 15rem;
+        height: 3.5rem;
+        border-radius: 1.75rem;
+        margin-top: 1.5rem;
+        box-shadow: 6px 6px 8px rgba(0,0,0,.5);
+        
+        &:hover{
+            background-color: $secondary-color;
+        }
     }
 
     :has(img){
@@ -372,6 +387,8 @@ footer{
 ._heroslider{
     // marquee slider
     // https://www.w3docs.com/snippets/css/how-to-have-the-marquee-effect-without-using-the-marquee-tag-with-css-javascript-and-jquery.html#result-8
+    
+    box-shadow: 0px 0px 1px 3px$lightgrey;
     @include flex(row,start,center);
     background-color: $lightgrey;
     color: $bg-color;
@@ -404,26 +421,30 @@ footer{
     }
 
     .slider:nth-of-type(1){
-        @include marquee(0%,-100%);
-        animation: marquee 10s linear infinite;
+        @include marquee(-100%,-0%);
+        animation: marquee 12s linear infinite;
         user-select: none;
     }
 
     .slider:nth-of-type(2){
-        @include marquee(0%,-100%); 
-        animation: marquee 10s linear infinite;
+        @include marquee(-100%,0%); 
+        animation: marquee 12s linear infinite;
         user-select: none;
     }
 
     .slider:nth-of-type(3){
-        @include marquee(0%,-100%); 
-        animation: marquee 10s linear infinite;
+        @include marquee(-100%,0%); 
+        animation: marquee 12s linear infinite;
         user-select: none;
     }
 }
 
 // ===== ABOUT SECTION =====
 .section_about{
+    @include media(767px){
+        margin-top:8rem;
+    }
+    
 
     h1{
         margin-bottom: 2rem;
@@ -433,14 +454,18 @@ footer{
         opacity: 0;
     }
 
+
     p{
-        margin-bottom: 1rem;
         opacity: 0;
+    }
+
+    p:nth-of-type(2){
+        margin: 2rem 0 .7rem 0;
     }
 
     .content:nth-of-type(1){
         @include media(767px){
-          width: 60%;  
+          width: 55%;  
         }
         
         // @include media(1023px){
@@ -450,10 +475,10 @@ footer{
 
     .content:nth-of-type(2){
         margin: 2rem auto;
-        width: 90%;
+        width: 100%;
        
         @include media(767px){
-            width: 40%;
+            width: 45%;
           }
         // @include media(1023px){
         //     width: 37%;
@@ -516,10 +541,13 @@ footer{
 // ===== EXPERIENCE SECTION =====
 .section_experience{
 
-    & .job_title{
+    .company{
         @include flex(row,space-between,center);
         align-items: flex-end;
-        margin-bottom: .5rem ;
+        margin-bottom: 1.1rem ;
+        @include media(767px){
+            width: 65%;
+        }
 
         p:nth-of-type(1){
             font-weight: 600;
@@ -536,16 +564,16 @@ footer{
     li{
         letter-spacing: .028rem;
         line-height: 1.1rem;
+        @include media(767px){
+            max-width: 85%;
+        }
     }
     // every li item except for the frist one
     ul li:not(li:nth-of-type(1)){
-        @include media(1023px){
-            max-width: 85%;
-        }
         
         position: relative;
         padding-left: 1.5rem;
-        margin-bottom: .25rem;
+        margin-bottom: .55rem;
         @include bullet(9px,4.5px);
 
         &::before{
@@ -576,7 +604,6 @@ footer{
     }
 }
 
-// ===== SKILLS SECTION =====
 .section_skills{
     h1{
         opacity: 0;
@@ -589,16 +616,17 @@ footer{
     }
 
     ul{
-        @include media(676px){
+        @include media(1023px){
         @include flex(row,space-between,center)
-    }
+        }
     }
 
     li{
         opacity: 0;
         position: relative;
         padding-left:1rem;
-        @include media(767px){
+        padding-right: 1.5rem;
+        @include media(1023px){
             width: 33%;
         }
 
@@ -635,27 +663,125 @@ footer{
 }
 
 // ===== CONTACT SECTION =====
-.overlay{
-    @include flex(row,center,center);
+.section_contact{
+    @include flex(column,start,center);
     align-items: center;
-    opacity: 0;
-    z-index: -10;
+    margin-bottom: 8rem;
 
-    :first-child{
-        width: 85%;
-        // width: 50%;
-        height:50%;
-        background-color: $lightgrey;
-        border-radius: 2rem;
+    h1{
+        transition: all .7s ease;
+        opacity: 0;
+        color: $base-color;
     }
+
+    // for previous use of second contact link
+    // &>a{
+    //     opacity: 0;
+    //     transition: all .7s ease;
+    //     margin-bottom: 2rem;
+    //     color: $bg-color;
+    //     background-color: $lightgrey;
+    //     font-weight: bold;
+    //     width: 15rem;
+    //     height: 3.5rem;
+    //     border-radius: 1.75rem;
+    //     margin-top: 1.5rem;
+    //     box-shadow: 6px 6px 8px rgba(0,0,0,.5);
+        
+    //     &:hover{
+    //         background-color: $secondary-color;
+    //     }
+    // }
+
+
+
+    .content{
+        
+        transition: max-height .5s linear;
+        animation: height .5s linear;
+       
+        width: 100%;
+        overflow: hidden;
+        @include flex(column,space-between,center);
+
+        @include media(767px){
+           width: clamp(500px,760px,50%);
+        }
+
+        // first child thats a div
+        div:first-child {
+            margin: 2rem auto;
+            width: 100%;
+            @include flex(column,center,center);
+            align-items: center;
+
+            a{
+                width: 18rem;
+            }
+
+            a:nth-of-type(2){
+                margin: 1rem auto;
+            }
+
+            @include media(767px){
+                flex-direction:row;
+                
+                a:nth-of-type(1){
+                    margin-right: 2rem;
+                }
+                a:nth-of-type(2){
+                    margin: 0;
+                }
+            }
+            
+        }
+    }
+
+    
+
+    form{
+        @include flex(column,space-between,center);
+        
+        label{
+            @include flex(column,end,center);
+            align-items: center;
+            width: 100%;
+        
+        }
+        input,textarea{
+            padding: .5rem 1rem;
+            font-family: inherit;
+            margin: .7rem auto;
+            width: 100%;
+            // height:3rem;
+            outline: none;
+            border-radius: 1.5rem;
+            font-size: large;
+        }
+
+        textarea{
+            resize: vertical;
+            min-height: 10rem;
+            height: 10rem;
+        }
+
+        // botboiinput
+        label:nth-of-type(4){
+            display: hidden;
+            height: 0;
+            opacity: 0;
+        }
+       
+        button{
+            @include opacity(0s,0s);
+            margin:1rem auto;
+        }
+    }
+
+    
+
 }
 
-.overlay_show{
-    opacity: 1;
-    z-index: 1;
-    position: fixed;
-    background-color: $bg-color30;
-    backdrop-filter: blur(10px);
-    width: 100vw;
-    height: 100vh;
-}
+
+// ====== OVERLAY =====
+

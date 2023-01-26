@@ -88,6 +88,8 @@ input {
 }
 
 body {
+  background: radial-gradient(circle farthest-side at left center, rgba(153, 218, 126, 0.12) -20%, rgb(43, 40, 38) 100%);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -126,42 +128,47 @@ header {
   }
 }
 
+button,
 a {
+  font: inherit;
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-items: center;
   align-items: center;
-  text-decoration: none;
-  color: rgb(238, 229, 218);
-  background-color: rgb(43, 40, 38);
-  border: 1px solid rgb(238, 229, 218);
-  font: inherit;
-  height: 3rem;
-  border-radius: 1.5rem;
   transition: all 0.5s ease;
   cursor: pointer;
-}
-a:hover {
-  background-color: #da917e;
+  text-decoration: none;
 }
 
 button {
   background-color: rgb(238, 229, 218);
-  font: inherit;
   font-weight: bold;
   width: 45%;
   height: 3.5rem;
   border-radius: 1.75rem;
-  transition: all 0.5s ease;
   border: none;
   margin-top: 1.5rem;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
   animation: opaque 0.5s ease;
   animation-fill-mode: forwards;
 }
 button:hover {
+  background-color: #99da7e;
+}
+
+.social_link,
+.resume_link,
+.section_contact a {
+  height: 3rem;
+  border-radius: 1.5rem;
+  color: rgb(238, 229, 218);
+  background-color: rgb(43, 40, 38);
+  border: 1px solid rgb(238, 229, 218);
+}
+.social_link:hover,
+.resume_link:hover,
+.section_contact a:hover {
   background-color: #da917e;
 }
 
@@ -217,7 +224,7 @@ section h1 span {
 section h2 {
   font-size: 1.7rem;
   font-weight: 700;
-  margin: 2rem 0 0.75rem 0;
+  margin: 3rem 0 0.5rem 0;
 }
 section img {
   border-radius: 2rem;
@@ -245,7 +252,7 @@ footer {
 
 .section_hero {
   margin-top: 8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 .section_hero #h1-1 {
   opacity: 0;
@@ -256,10 +263,21 @@ footer {
   color: #da917e;
   transition: all 0.7s ease;
 }
-.section_hero button {
+.section_hero a {
   opacity: 0;
   transition: all 0.7s ease;
   margin-bottom: 2rem;
+  color: rgb(43, 40, 38);
+  background-color: rgb(238, 229, 218);
+  font-weight: bold;
+  width: 15rem;
+  height: 3.5rem;
+  border-radius: 1.75rem;
+  margin-top: 1.5rem;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+}
+.section_hero a:hover {
+  background-color: #99da7e;
 }
 .section_hero :has(img) {
   max-width: 405px;
@@ -272,6 +290,7 @@ footer {
 }
 
 ._heroslider {
+  box-shadow: 0px 0px 1px 3px rgb(238, 229, 218);
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -311,42 +330,47 @@ footer {
   margin-right: 1rem;
 }
 ._heroslider .slider:nth-of-type(1) {
-  animation: marquee 10s linear infinite;
+  animation: marquee 12s linear infinite;
   user-select: none;
 }
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
 }
 ._heroslider .slider:nth-of-type(2) {
-  animation: marquee 10s linear infinite;
+  animation: marquee 12s linear infinite;
   user-select: none;
 }
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
 }
 ._heroslider .slider:nth-of-type(3) {
-  animation: marquee 10s linear infinite;
+  animation: marquee 12s linear infinite;
   user-select: none;
 }
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
 }
 
+@media (min-width: 767px) {
+  .section_about {
+    margin-top: 8rem;
+  }
+}
 .section_about h1 {
   margin-bottom: 2rem;
 }
@@ -354,21 +378,23 @@ footer {
   opacity: 0;
 }
 .section_about p {
-  margin-bottom: 1rem;
   opacity: 0;
+}
+.section_about p:nth-of-type(2) {
+  margin: 2rem 0 0.7rem 0;
 }
 @media (min-width: 767px) {
   .section_about .content:nth-of-type(1) {
-    width: 60%;
+    width: 55%;
   }
 }
 .section_about .content:nth-of-type(2) {
   margin: 2rem auto;
-  width: 90%;
+  width: 100%;
 }
 @media (min-width: 767px) {
   .section_about .content:nth-of-type(2) {
-    width: 40%;
+    width: 45%;
   }
 }
 
@@ -430,20 +456,25 @@ footer {
   box-shadow: 0px 0px 10px #da917e;
 }
 
-.section_experience .job_title {
+.section_experience .company {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   justify-items: center;
   align-items: flex-end;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.1rem;
 }
-.section_experience .job_title p:nth-of-type(1) {
+@media (min-width: 767px) {
+  .section_experience .company {
+    width: 65%;
+  }
+}
+.section_experience .company p:nth-of-type(1) {
   font-weight: 600;
   color: #da917e;
   margin-right: 1rem;
 }
-.section_experience .job_title p:nth-of-type(2) {
+.section_experience .company p:nth-of-type(2) {
   white-space: nowrap;
   color: darkgrey;
 }
@@ -451,15 +482,15 @@ footer {
   letter-spacing: 0.028rem;
   line-height: 1.1rem;
 }
+@media (min-width: 767px) {
+  .section_experience li {
+    max-width: 85%;
+  }
+}
 .section_experience ul li:not(li:nth-of-type(1)) {
   position: relative;
   padding-left: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-@media (min-width: 1023px) {
-  .section_experience ul li:not(li:nth-of-type(1)) {
-    max-width: 85%;
-  }
+  margin-bottom: 0.55rem;
 }
 .section_experience ul li:not(li:nth-of-type(1))::before, .section_experience ul li:not(li:nth-of-type(1))::after {
   content: "";
@@ -500,7 +531,7 @@ footer {
 .section_skills .content {
   width: 100%;
 }
-@media (min-width: 676px) {
+@media (min-width: 1023px) {
   .section_skills ul {
     display: flex;
     flex-direction: row;
@@ -512,8 +543,9 @@ footer {
   opacity: 0;
   position: relative;
   padding-left: 1rem;
+  padding-right: 1.5rem;
 }
-@media (min-width: 767px) {
+@media (min-width: 1023px) {
   .section_skills li {
     width: 33%;
   }
@@ -542,30 +574,98 @@ footer {
   box-shadow: 0px 0px 5px #99da7e;
 }
 
-.overlay {
+.section_contact {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: start;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 8rem;
+}
+.section_contact h1 {
+  transition: all 0.7s ease;
+  opacity: 0;
+  color: #da917e;
+}
+.section_contact .content {
+  transition: max-height 0.5s linear;
+  animation: height 0.5s linear;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+}
+@media (min-width: 767px) {
+  .section_contact .content {
+    width: clamp(500px, 760px, 50%);
+  }
+}
+.section_contact .content div:first-child {
+  margin: 2rem auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   justify-items: center;
   align-items: center;
+}
+.section_contact .content div:first-child a {
+  width: 18rem;
+}
+.section_contact .content div:first-child a:nth-of-type(2) {
+  margin: 1rem auto;
+}
+@media (min-width: 767px) {
+  .section_contact .content div:first-child {
+    flex-direction: row;
+  }
+  .section_contact .content div:first-child a:nth-of-type(1) {
+    margin-right: 2rem;
+  }
+  .section_contact .content div:first-child a:nth-of-type(2) {
+    margin: 0;
+  }
+}
+.section_contact form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+}
+.section_contact form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+.section_contact form input, .section_contact form textarea {
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  margin: 0.7rem auto;
+  width: 100%;
+  outline: none;
+  border-radius: 1.5rem;
+  font-size: large;
+}
+.section_contact form textarea {
+  resize: vertical;
+  min-height: 10rem;
+  height: 10rem;
+}
+.section_contact form label:nth-of-type(4) {
+  display: hidden;
+  height: 0;
   opacity: 0;
-  z-index: -10;
 }
-.overlay :first-child {
-  width: 85%;
-  height: 50%;
-  background-color: rgb(238, 229, 218);
-  border-radius: 2rem;
-}
-
-.overlay_show {
-  opacity: 1;
-  z-index: 1;
-  position: fixed;
-  background-color: rgba(43, 40, 38, 0.3);
-  backdrop-filter: blur(10px);
-  width: 100vw;
-  height: 100vh;
+.section_contact form button {
+  animation: opacity 0s ease-in;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+  margin: 1rem auto;
 }
 
 /*# sourceMappingURL=index.css.map */
