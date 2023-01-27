@@ -578,7 +578,7 @@ footer {
   opacity: 0;
   color: #da917e;
 }
-.section_projects > p {
+.section_projects .content p {
   opacity: 0;
 }
 .section_projects .content_projects {
