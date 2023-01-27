@@ -4,25 +4,25 @@
   <meta charset='UTF-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link rel="shortcut icon" tuype='image/png' href="./assets/favicon.png">
-  <link rel="image_src" href="./assets/preview.png">
+  <link rel='shortcut icon' tuype='image/png' href='./assets/favicon.png'>
+  <link rel='image_src' href='./assets/preview.png'>
   <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,500&display=swap');</style>
   <link rel='stylesheet' href='./scss/index.css'>
-  <meta name="description" content="Mike Macfarland is a front end developer and content creator dedicated to building responsive and accessible products" />
+  <meta name='description' content='Mike Macfarland is a front end developer and content creator dedicated to building responsive and accessible products' />
   <script src='./app.js' defer></script>
   <title>Mike Macfarland | Profile </title>
 </head>
 <body>
   <header>
-    <a class='social_link' target='blank' href="https://github.com/mikemacfarland"><img src='./assets/github-logo.png' alt="mike macfarlands github">Mike Macfarlands Github</a>
-    <a class='resume_link' target='blank' href="https://drive.google.com/file/d/1nJvJ77za2OyHMk5jbuybhK7n6AN0xFDZ/view">Download Resume</a>
+    <a class='social_link' target='blank' href='https://github.com/mikemacfarland'><img src='./assets/github-logo.png' alt='mike macfarlands github'>Mike Macfarlands Github</a>
+    <a class='resume_link' target='blank' href='https://drive.google.com/file/d/1nJvJ77za2OyHMk5jbuybhK7n6AN0xFDZ/view'>Download Resume</a>
   </header>
 
   <section class='section_hero'>
     <div class='content'>
       <h1 id='h1-1'>Mike.</h1>
       <h1 id='h1-2' class='_title'>Front End Developer, Content Creator</h1>
-      <a href="#contact" class="contact_link">Contact Me</a>    
+      <a href='#contact' class='contact_link'>Contact Me</a>    
       </div>
       <div class='content'>
       <img src='./assets/mike-macfarland.jpg' alt='Mike Macfarland'>
@@ -33,15 +33,15 @@
     <div class='slider'>
       <!-- content injected from js -->
     </div>
-    <div class='slider' aria-hidden="true">
+    <div class='slider' aria-hidden='true'>
       <!-- content injected from js -->
     </div>
-    <div class='slider' aria-hidden="true">
+    <div class='slider' aria-hidden='true'>
       <!-- content injected from js -->
     </div>
   </div>
 
-  <section id='about' class='section_about'>
+  <section class='section_about'>
     <div class='content'>
       <h1>About</h1>
       <p>My passion is creation. As a self-taught product developer and machine programmer,
@@ -83,13 +83,45 @@
           <li>Integrated version control and documentation requirements into production workflow to improve processes and increase profits</li>
         </ul>
       </div>
-
-      
-
     </div>
   </section>
-  <section id='skills' class='section_skills'>
-    <div class="content">
+
+  <section class='section_projects'>
+    <div class='content'>
+      <h1>Projects</h1>
+      <h2>Check out what ive been working on</h2>
+      <p>Creating a project to planned design and structure is not only fullfiling, it is necessary for user experience and client satisfaction.</p>
+    </div>
+    <div class='content_projects'>
+        <div class='project portrait'>
+          <a href='https://the-sauce-15d48.web.app/' target='blank'>
+            <img src='./assets/thesauce-preview.png' alt='recipe search site'>
+            <p>Recipe search</p>
+          </a>
+        </div>
+        <div class='project square'>
+          <a href='#' >
+            <img src='./assets/1x1comingsoon.png' alt='text: coming soon'>
+            <p>Coming soon...</p>
+          </a>
+        </div>
+        <div class='project square'>
+          <a href='https://poetic-lolly-f307c4.netlify.app/'>
+            <img  src='./assets/gaspos-preview.png' alt='gas station pos'>
+            <p>Gas pos UI</p>
+          </a>
+        </div>
+        <div class='project portrait'>
+          <a href='#'>
+            <img src='./assets/9x16comingsoon.png' alt='text: coming soon'>
+            <p>Coming soon...</p>
+          </a>
+        </div>
+    </div>
+  </section>
+
+  <section class='section_skills'>
+    <div class='content'>
       <h1>Why<span>Me</span></h1>
       <ul>
         <li>
@@ -111,20 +143,20 @@
   <section id='contact' class='section_contact'>
     <h1>Lets connect</h1>
     
-    <div class="content">
+    <div class='content'>
       <div>
-        <a href="mailto:m_macfarland@live.com">Email</a>
-        <a target="_blank" href="https://www.linkedin.com/in/mike-macfarland/">Linkedin</a>
+        <a href='mailto:m_macfarland@live.com'>Email</a>
+        <a target='_blank' href='https://www.linkedin.com/in/mike-macfarland/'>Linkedin</a>
       </div>
 
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="subject" 
-        value="Inquiry from mike macfarland profile" />
-          <label>Your Name: <input type="text" name="name" /></label>          
-          <label>Your Email: <input type="email" name="email" /></label>
-          <label>Message: <textarea name="message"></textarea></label>
-          <label for="bot-field"><input type="text"></label>
-          <button type="submit">Send</button>
+      <form name='contact' method='POST' data-netlify='true' netlify-honeypot='bot-field'>
+        <input type='hidden' name='subject' 
+        value='Inquiry from mike macfarland profile' />
+          <label>Your Name: <input type='text' name='name' /></label>          
+          <label>Your Email: <input type='email' name='email' /></label>
+          <label>Message: <textarea name='message'></textarea></label>
+          <label for='bot-field'><input type='text'></label>
+          <button type='submit'>Send</button>
       </form>
     </div>
     

@@ -87,9 +87,34 @@ input {
   animation-fill-mode: forwards;
 }
 
+.scaleup {
+  animation: scaleup 0.4s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes scaleup {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaledown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
 body {
   position: relative;
-  background: radial-gradient(circle farthest-side at left center, rgba(153, 218, 126, 0.12) -20%, rgb(43, 40, 38) 100%);
+  background: radial-gradient(circle farthest-side at left center, rgba(153, 218, 126, 0.12) 0%, rgb(43, 40, 38) 100%);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -185,6 +210,10 @@ button:hover {
   padding: 0 2rem;
 }
 
+img {
+  border-radius: 2rem;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -227,7 +256,6 @@ section h2 {
   margin: 3rem 0 0.5rem 0;
 }
 section img {
-  border-radius: 2rem;
   width: 100%;
   height: 100%;
   max-width: 520px;
@@ -525,6 +553,128 @@ footer {
 .section_experience ul li:not(li:nth-of-type(1)):hover::after {
   transition: all 0.3s linear;
   box-shadow: 0px 0px 10px #da917e;
+}
+
+.section_projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  justify-items: center;
+  align-items: flex-start;
+}
+@media (min-width: 1023px) {
+  .section_projects {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+  }
+}
+.section_projects h1 {
+  opacity: 0;
+  margin-bottom: 2rem;
+}
+.section_projects h2 {
+  opacity: 0;
+  color: #da917e;
+}
+.section_projects > p {
+  opacity: 0;
+}
+.section_projects .content_projects {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-areas: "portrait1 square1" "portrait1 portrait2" "square2 portrait2";
+}
+@media (min-width: 767px) {
+  .section_projects .content_projects {
+    grid-template-areas: "portrait1 square1 portrait2" "portrait1 square2 portrait2";
+  }
+}
+@media (min-width: 1023px) {
+  .section_projects .content_projects {
+    margin-top: 0;
+  }
+}
+.section_projects .portrait,
+.section_projects .square {
+  transform: scale(0);
+  margin: 0.5rem;
+  transition: transform 0.8s ease;
+}
+.section_projects .portrait a,
+.section_projects .square a {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.section_projects .portrait a :visited img,
+.section_projects .square a :visited img {
+  filter: grayscale(0);
+}
+.section_projects .portrait a p,
+.section_projects .square a p {
+  color: rgb(43, 40, 38);
+  opacity: 1;
+  position: fixed;
+  top: 10%;
+  width: 90%;
+  font-size: small;
+  text-align: center;
+  border-radius: 2rem;
+  background-color: rgb(238, 229, 218);
+  padding: 0.6rem;
+}
+@media (min-width: 767px) {
+  .section_projects .portrait a p,
+  .section_projects .square a p {
+    opacity: 0;
+    font-size: medium;
+  }
+}
+.section_projects .portrait img,
+.section_projects .square img {
+  background: white;
+  border-radius: 1rem;
+  object-fit: cover;
+  transition: all 0.7s ease;
+}
+@media (min-width: 767px) {
+  .section_projects .portrait img,
+  .section_projects .square img {
+    filter: grayscale(100%);
+  }
+}
+.section_projects .portrait :hover,
+.section_projects .square :hover {
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+.section_projects .portrait :hover img,
+.section_projects .square :hover img {
+  filter: grayscale(0);
+}
+@media (min-width: 767px) {
+  .section_projects .portrait :hover p,
+  .section_projects .square :hover p {
+    transition: all 1s ease;
+    opacity: 1;
+    background-color: rgb(238, 229, 218);
+    color: rgb(43, 40, 38);
+    box-shadow: 2px 2px 5px rgb(43, 40, 38);
+  }
+}
+.section_projects .square:nth-of-type(1n) {
+  grid-area: square1;
+}
+.section_projects .square:nth-of-type(2n) {
+  grid-area: square2;
+}
+.section_projects .portrait:nth-of-type(1n) {
+  grid-area: portrait1;
+}
+.section_projects .portrait:nth-of-type(2n) {
+  grid-area: portrait2;
 }
 
 .section_skills h1 {
