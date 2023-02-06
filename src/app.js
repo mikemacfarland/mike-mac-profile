@@ -22,6 +22,9 @@ const contact = document.querySelector('#contact')
 const projects = document.querySelector('.section_projects')
 
 // elements
+const inputs = document.querySelectorAll('input')
+const textArea = document.querySelector('textarea')
+const form = document.querySelector('form')
 const nameHeading = document.querySelector('#h1-1')
 const titleHeading = document.querySelector('#h1-2')
 const aboutHeading = about.querySelector('h1')
@@ -137,3 +140,58 @@ scrollItems.map((item)=>{
         slider.innerHTML += ScrollItem(item)
     })
 })
+
+// sanitize inputs
+const filterInput = (val)=>{
+    return val.replace(/[{}<>^/%*`[\]=]/g,'')
+}
+
+inputs.forEach((input)=>input.addEventListener('keyup',()=>{
+        input.value = filterInput(input.value)
+        if(input === input[2]){
+            input.value.length > 70 ? input.value = input.value.substring(0,70) : input.value
+        }
+        if(input === input[3]){
+            input.value.length > 64 ? input.value = input.value.substring(0,64) : input.value
+        }
+    })
+)
+
+inputs.forEach((input)=>input.addEventListener('paste',(e)=>{
+    e.preventDefault()
+    const data = e.clipboardData.getData('text') ? e.clipboardData.getData('text') : window.clipboardData.getData('text')
+    console.log(filterInput(data))
+    input.value = input.value + filterInput(data)
+}))
+
+textArea.addEventListener('keyup',()=>{
+    textArea.value = filterInput(textArea.value)
+})
+
+textArea.addEventListener('paste',(e)=>{
+    e.preventDefault()
+    const data = filterInput(e.clipboardData.getData('text') ? e.clipboardData.getData('text') : window.clipboardData.getData('text'))
+    
+    textArea.value = (textArea.value + data).substring(0,350)
+
+})
+
+form.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let emailTest = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
+    let validEmail = emailTest.test(inputs[3].value)
+    
+    if(inputs[2].value.length < 2){
+        alert('Please enter your Name.')
+    }
+    if(inputs[3].value.length < 4 || !validEmail){
+        alert('Please enter a valid Email.')
+    }
+    if(textArea.value.length < 5){
+        alert('Please enter a message.')
+    }
+    else{
+        form.submit()
+    }
+})
+
