@@ -2,7 +2,7 @@
 
 --Layout
     ✔ check cross browser - mozilla - ie - safari @done(23-01-26 13:28)
-    ☐ figure out whats overflowing the body in x for small screens
+    ✔ figure out whats overflowing the body in x for small screens @done(23-03-01 12:55)
     
 --Animations
     ✔ add scale animations to experience items @done(23-01-26 19:31)
