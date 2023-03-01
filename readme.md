@@ -8,7 +8,7 @@
 
 ## How to run application locally
 * clone repo and cd into directory
-`git clone git@github.com:mikemacfarland/Recipe-Search-App.git && cd Recipe-Search-App`
+`git clone git@github.com:mikemacfarland/Recipe-Search-App.git && cd profile`
 * install local npm packages
 `npm install`
 * Start react application
@@ -16,8 +16,6 @@
 
 
 ## Project Goals/Skills
-    - Single page appliction
-    - React Router
-    - React Context
-    - Firebase
-    - GitHub workflow
+    - Javascript event listeners 
+    - Css animations
+    - Sass
