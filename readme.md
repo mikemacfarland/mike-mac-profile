@@ -1,12 +1,12 @@
-  # Mike Macfarland - Portfolio/Online Resume
+# Mike Macfarland - Portfolio/Online Resume
 
-# Deployed on Netlify www.mikemacfarland.io
-# site inspiration & design : https://foliodigitalcreator.webflow.io/
+## Deployed on Netlify www.mikemacfarland.io
+## site inspiration & design : https://foliodigitalcreator.webflow.io/
 
-# List of dependencies
+## List of dependencies
 * [Sass](https://sass-lang.com/)
 
-# How to run application locally
+## How to run application locally
 * clone repo and cd into directory
 `git clone git@github.com:mikemacfarland/Recipe-Search-App.git && cd Recipe-Search-App`
 * install local npm packages
@@ -15,7 +15,7 @@
 `npm start`
 
 
-# Project Goals/Skills
+## Project Goals/Skills
     - Single page appliction
     - React Router
     - React Context
